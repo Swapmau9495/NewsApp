@@ -32,6 +32,7 @@ export default function NewsApp({storeddata,setstoreddata,search}) {
           setNews(data.children)
          if(!storeddata.find(e=>e.id==data.id) && !search){
             storeddata.push(data)
+            storeddata.sort((a,b) => (a.created_at < b.created_at) ? 1 : ((b.created_at < a.created_at) ? -1 : 0));
             }
         if(data.title){
           let filtered=data?.title?.includes(inputsearch)
