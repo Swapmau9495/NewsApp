@@ -27,7 +27,7 @@ export default function NewsApp({storeddata,setstoreddata,search}) {
 
   const Newsdata =  (i,inputsearch) => {
     $.ajax({
-      url: `http://hn.algolia.com/api/v1/items/${i}`, 
+      url: `https://hn.algolia.com/api/v1/items/${i}`, 
           success: function (data) {
           setNews(data.children)
          if(!storeddata.find(e=>e.id==data.id) && !search){
@@ -95,9 +95,9 @@ const Onchange=(e)=>{
             </form>  }
             <EuiSpacer size="xl"/>
 
-            {search &&  <EuiFlexGroup justifyContent="center" alignItems="center">Search  &nbsp; <Searchfilters options={searchoptions} value={searchvalue} setvalue={setsearchValue}/>
-            &nbsp; By  &nbsp;<Searchfilters options={popularityoptions} value={popularity} setvalue={setpopularity}/>
-            &nbsp;  For  &nbsp;<Searchfilters options={fortimeoptions} value={time} setvalue={setTime}/>
+            {search &&  <EuiFlexGroup justifyContent="center" alignItems="center"> <p  style={{color:"WHite"}}  >Search  &nbsp;</p> <Searchfilters options={searchoptions} value={searchvalue} setvalue={setsearchValue}/>
+            <p  style={{color:"WHite"}}  > &nbsp; By  &nbsp;</p> <Searchfilters options={popularityoptions} value={popularity} setvalue={setpopularity}/>
+            <p  style={{color:"WHite"}}  > &nbsp;  For  &nbsp;</p><Searchfilters options={fortimeoptions} value={time} setvalue={setTime}/>
              </EuiFlexGroup>
               }
             {search &&  <EuiSpacer size="xl"/>}
